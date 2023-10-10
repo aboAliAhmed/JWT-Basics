@@ -1,3 +1,5 @@
 /node_modules
 .env
-lol.md
+*.md
+!README.md
+!prepareations.md
