@@ -4,6 +4,7 @@ for starting project
 install node
 install npm
 pacage.json => npm init
+install mongoose
 slugify => small library make a more readabl url from names
         => npm install slugify
 

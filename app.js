@@ -1,27 +1,11 @@
 const dotenv = require('dotenv');
 const express = require('express');
-const mongoose = require('mongoose');
+const mainRouter = require('./routes/main');
 
 dotenv.config({ path: './config.env' });
 require('express-async-errors');
 
 const app = express();
-
-const DB = process.env.DATABASE.replace(
-  '<PASSWORD>',
-  process.env.DATABASE_PASSWORD,
-);
-mongoose
-  .connect(DB, {
-    // .connect(process.env.DATABASE_LOCAL, { // for connecting the local database
-    useNewUrlParser: true,
-    useCreateIndex: true,
-    useFindAndModify: false,
-  })
-  .then((con) => {
-    // console.log(con);
-    console.log('DB connection successful!');
-  });
 
 const notFoundMiddleware = require('./middleware/not-found');
 const errorHandlerMiddleware = require('./middleware/error-handler');
@@ -29,6 +13,8 @@ const errorHandlerMiddleware = require('./middleware/error-handler');
 // middleware
 app.use(express.static('./public'));
 app.use(express.json());
+
+app.use('/api/v1', mainRouter);
 
 app.use(notFoundMiddleware);
 app.use(errorHandlerMiddleware);

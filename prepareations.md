@@ -26,3 +26,5 @@ connect mongodb on terminal
 mongosh "mongodb+srv://ahmdthevenin2799:<PASSWORD>@cluster0.d9fc2wm.mongodb.net/"
 
 ```
+
+when it come to production you should but the "JWT_SECRET" long complex and ungessable
